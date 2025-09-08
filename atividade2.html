@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>   
+   <title>Exemplo especificidade de seletores</title>
+   <style>
+      /* todos os itens da lista começam vermelhos */
+      li{color:red;}
+
+      /* itens com a classe churras ficam verdes */
+      .churras{color:green;}
+
+      /* itens com a classe fruta ficam cinza */
+      .fruta{color:gray}
+
+      /* se um item churras vem logo depois de outro li, ele fica preto */
+      li+li.churras{color: black;}
+
+      /* se for churras e tiver draggable=true, fica magenta */
+      .churras[draggable="true"]{color: magenta;}
+
+      /* itens com id lip1, lip2 ou lip3 ficam azuis */
+      #lip1,#lip2,#lip3{color:blue}
+
+      /* o item com id lip3 e classe fruta fica laranja */
+      #lip3.fruta{color:orange}
+
+      /* regra para um lip5 que não existe, então não muda nada */
+      ol>li.churras#lip5{color:purple}
+   </style>
+</head>
+<body>   
+   <ol>
+      <!-- fica vermelho, porque só a regra do li vale -->
+      <li id="lip0">Abacaxi</li>
+
+      <!-- fica cinza, porque tem a classe fruta -->
+      <li class="fruta">Melão</li>
+
+      <!-- fica azul, porque o id lip2 vence a classe fruta -->
+      <li id="lip2" class="fruta">Pera</li>
+
+      <!-- fica laranja, porque o id lip3 com classe fruta é mais específico -->
+      <li id="lip3" class="fruta">Uva</li>
+
+      <!-- fica cinza, porque é fruta e não tem nenhuma regra mais forte -->
+      <li id="lip4" class="fruta">Maçã</li>
+
+      <!-- fica verde, porque tem a classe churras -->
+      <li class="churras">Carne</li>
+
+      <!-- fica preto, porque é churras logo depois de outro li -->
+      <li class="churras">Linguiça</li>
+
+      <!-- fica magenta, porque além de ser churras tem draggable=true -->
+      <li id="lip7" class="churras" draggable="true">Pão de alho</li>
+   </ol>   
+</body>
