@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pagina 2 HTML básico</title>
+    <style>
+        img{
+            width: 700px;
+            height: 500px;
+            border: 3px solid #000000;
+            border-radius: 30ch; 
+        }
+        img:hover{
+            border:#FFFFFF;
+            width: 500;
+            height: 300; 
+            box-shadow: #eb50b0;
+        }
+        h1{
+            color: rgb(41, 41, 121);
+            background-color: #888888;
+    }
+    table, th, td {
+   /* border-collapse: collapse;*/ 
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+    </style>
+</head>
+    <body>
+       <div> 
+        <h1>titulo grande</h1>
+        <h2>titulo um pouco menor</h2>
+        <h3>um pouco menor</h3>
+        <h4>menor ainda</h4>
+        <h5>menorzinho</h5>
+        <h6>mais menorzinho ainda</h6>
+       </div>
+       <div> 
+       
+        <strong>negrito</strong> </br>
+        <em>italico</em> </br>
+        <small>texto pequeno</small> </br>
+        <mark>marcado</mark> </br>
+        <del>riscado</del> </br>
+       </div>
+    <div>
+        <h2>Lista de itens</h2>
+        <p>Lista de proteínas</p>
+            <ol reversed>
+                <li>Carne</li>
+                <li>Frango</li>
+                <li>Porco</li>
+                <li>Linguiça</li>
+                <li>Camarão</li>
+            </ul>
+        <p>lista de definição</p>
+        <dl>
+            <dt>café</dt>
+            <dd>bebida escura amarga</dd>
+            <dt>agua</dt>
+            <dd>bebida natural deliciosa</dd>
+        </dl>
+    </div>    
+
+    <div>
+        <h2>Imagens</h2>
+        <img src="" alt="SEM IMAGEM"> 
+    </div>
+    <div>
+        <h2>Tabela</h2>
+        <table>
+            <tr>
+                <td> Cidade</td>
+                <td> Estado</td>
+                <td> Universidade</td>
+            </tr>
+            <tr>
+                <td> Florianópolis</td>
+                <td> Santa Catarina</td>
+                <td> UFSC</td>
+            </tr>
+        </table>
+    </div>
+   <!-- div>h2{formularios}+input*2 -->
+    <div>
+        <h2>Formulários</h2>
+  <p>Formulário sobre assunto</p>
+
+  <div class="form-container">
+    <form action="">
+      <label for="nomeusuario">Nome</label>
+      <input id="nomeusuario" type="text" placeholder="Digite seu nome completo">
+        <br>
+      <label for="emailusuario">Email</label>
+      <input id="emailusuario" type="email" placeholder="email@gmail.com">
+        <br>
+      <label for="endereçousuario">Endereço</label>
+      <input id="endereçousuario" type="text" placeholder="Rua, número, bairro">
+        <br>
+      <label for="Corusuario">Cor</label>
+      <input id="Corusuario" type="color">
+        <br>
+      <label for="datanasc">Data de nascimento</label>
+      <input id="datanasc" type="date">
+        <br>
+      <label for="observacoes">Observações</label>
+      <textarea id="observacoes" rows="5" placeholder="Digite suas observações aqui..."></textarea>
+        <br>
+      <input type="button" value="Enviar">
+    </form>
+
+    <form action="https://google.com/search" method="GET"> <!-- Tem o metodo post tmb, porem não funcionan no google. Mas é o ideal para senhas -->
+        <h2>Busca</h2>
+        <label for="key"> Entre com termo</label>
+        <input type="text" id="key" name="q">
+        <button>Buscar</button>
+    </form>
+  </div>
+
+    </div>
+    <iframe 
+  src="https://rbeninca.github.io/notas/pdm.html" 
+  width="100%" 
+  height="600px" 
+  frameborder="0">
+</iframe>
+<a href="pagina3.html">pagina3</a>
+
+    </body>
+</html>
