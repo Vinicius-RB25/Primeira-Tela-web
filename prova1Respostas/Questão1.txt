@@ -1,14 +1,2 @@
 Questão 1: O usuario digita a URL para buscar a pagina web, depois o navegador consulta a DNS do cliente, depois ele tem que fazer a conexão, que é feita por meio do TCP/IP, 
 após isso ele envia a requisição HTTP ou HTTPs e por fim entrega a resposta em HTML e CSS e renderiza a pagina.
-
-
-Questão 2 - B
-
-
-Questão 3 - C
-
-
-Questão 4 - B
-
-
-Questão 5 - D 
