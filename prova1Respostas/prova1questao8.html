@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Questão 8</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+    header, .banner, .left, .right, .main, .low, footer {
+      padding: 100px;
+      text-align: center;
+      color: white;
+    }
+    header { background: orange; }
+    .banner { background: red; }
+    .left { background: green; }
+    .right { background: gold; color: black; }
+    .main { background: dodgerblue; }
+    .low { background: lightgreen; color: black; }
+    footer { background: blue; }
+
+    @media screen and (min-width: 768px) {
+      .middle {
+        display: flex;
+      }
+      .left {
+        flex: 1;
+      }
+      .main {
+        flex: 3;
+      }
+      .right {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>Header</header>
+    <div class="banner">Banner</div>
+
+    <div class="middle">
+      <div class="left">Left Aside</div>
+      <div class="main">Main Content</div>
+      <div class="right">Right Aside</div>
+    </div>
+
+    <div class="low">Low Content</div>
+    <footer>Footer</footer>
+  </div>
+</body>
+</html>
