@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cria N paragrafos</h1>
+
+    <script>
+        let paragrafos = prompt("Quantos paragrafos deseja criar?")
+
+        //converter para int
+        paragrafos = parseInt(paragrafos)
+
+        for(let i = 0; i < paragrafos; i++){
+            let p = document.createElement("p")
+            p.innerText = (i + 1)
+            p.style.border = "1px solid black"
+            document.body.appendChild(p)
+        } 
+
+        //configurando display
+        document.body.style.display = "flex"
+        document.body.style.flexDirection = "row"
+        document.body.style.justifyContent = "center"
+        document.body.style.alignItems = "center" 
+
+
+    </script>
+    
+</body>
+</html>

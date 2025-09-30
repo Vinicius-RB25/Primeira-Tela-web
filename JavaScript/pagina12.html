@@ -18,31 +18,28 @@
     document.body.style.backgroundColor = "lightgray"
     **/
 
-    button = document.createElement("button")
-    button.id = "botao"
-    button.innerText = "Clique em mim"
+    botao = document.createElement("button")
+    botao.id = "botao"
+    botao.innerText = "Clique em mim"
 
     paragrafo = document.createElement("p")
     paragrafo.id = "p"
 
     document.body.appendChild(paragrafo)
-    document.body.appendChild(button)
+    document.body.appendChild(botao)
 
     document.body.style.height = "100vh"
     document.body.style.display = "flex"
     document.body.style.justifyContent = "center"
     document.body.style.alignItems = "center"
 
-    addEventListener
-    button.addEventListener("Click", ()=> {
-        p.innerText = "Bla"
+    var contador = 0
+    botao.addEventListener("click",function(){
+        contador++
+        paragrafo.innerText=contador
+
     })
-
    
-
-
-
-
     </script>
 </body>
 </html>
