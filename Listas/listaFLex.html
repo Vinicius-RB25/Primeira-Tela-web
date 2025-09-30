@@ -1,0 +1,295 @@
+<!--Questão 1 -- Nivel 12. O objetivo era posicionar os sapos verdes sobre os lírios que estão distribuidos com espaços entre eles e nas bordas
+justify-content: space-around;-->
+<!--com o justify-content: space-around, os sapos se distribuem uniformente, mas com espacos nas bordas-->
+
+<!--Nivel 14. O objetivo era alinhas os sapos verticamente no centro da tela
+align-items: center; -->
+<!--align-items alinha os itens no eixo cruzado e o center centraliza os iten verticalmente dentro do container-->
+
+
+<!--Questão 2 -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox Layout</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #eef6ff;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 320px;
+      height: 580px;
+      background: #fff;
+      border: 3px solid #6a1b9a;
+      border-radius: 8px;
+      padding: 15px;
+    }
+    .logo {
+      font-size: 22px;
+      color: #555;
+    }
+    .lines {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .line {
+      height: 18px;
+      background: #ddd;
+      border-radius: 6px;
+    }
+    .circle {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+    .button {
+      width: 90px;
+      height: 25px;
+      background: #bbb;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">Company Logo</div>
+    <div class="lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <div class="circle"></div>
+    <div class="button"></div>
+  </div>
+</body>
+</html>
+
+
+
+<!--Questão 3 -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil Flex</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+      background: #999;
+      font-family: Verdana, sans-serif;
+    }
+    .container {
+      width: 280px;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .user {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      align-items: center;
+    }
+    .avatar {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+    }
+    .userPerfil {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .name {
+      font-weight: bold;
+      font-size: 1em;
+    }
+    .address {
+      font-size: 0.8em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="user">
+      <img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg">
+      <div class="userPerfil">
+        <div class="name">Linda Hart</div>
+        <div class="address">2420</div>
+      </div>
+    </div>
+    <div class="user">
+      <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg">
+      <div class="userPerfil">
+        <div class="name">Roger Medina</div>
+        <div class="address">2420</div>
+      </div>
+    </div>
+    <div class="user">
+      <img class="avatar" src="https://randomuser.me/api/portraits/men/45.jpg">
+      <div class="userPerfil">
+        <div class="name">Dean Sullivan</div>
+        <div class="address">6727</div>
+      </div>
+    </div>
+    <div class="user">
+      <img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg">
+      <div class="userPerfil">
+        <div class="name">Elizabeth Austin</div>
+        <div class="address">6685</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+<!--Questão 4 -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Cards</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fcefdc;
+    }
+    .container {
+      display: flex;
+      gap: 12px;
+      width: 95%;
+      max-width: 1100px;
+    }
+    .card {
+      flex: 1;
+      height: 280px;
+      border-radius: 20px;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      color: #fff;
+      overflow: hidden;
+    }
+    .card.main {
+      flex: 3;
+      justify-content: flex-start;
+      padding: 15px;
+    }
+    .info h1 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+    .info p {
+      margin: 4px 0 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0');"></div>
+    <div class="card main" style="background-image: url('https://images.unsplash.com/photo-1482192596544-9eb780fc7f66');">
+      <div class="info">
+        <h1>Oretemauw</h1>
+        <p>Omuke trughte a otufa</p>
+      </div>
+    </div>
+    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');"></div>
+    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1520975926219-19f0b1b7f2b6');"></div>
+    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470');"></div>
+  </div>
+</body>
+</html>
+
+
+
+<!--Questão 5 -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout Flex</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 25px;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 80vh;
+      max-width: 850px;
+      margin: auto;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .Header, .Footer {
+      background: #87c735;
+      padding: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .main {
+      display: flex;
+      flex: 1;
+    }
+    .Article {
+      flex: 3;
+      padding: 18px;
+      background: #f2f2f2;
+    }
+    .Aside {
+      flex: 1;
+      padding: 18px;
+      background: #fff3d6;
+    }
+    .Nav {
+      flex: 1;
+      padding: 18px;
+      background: #d8f0d8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="Header">Header</div>
+    <div class="main">
+      <div class="Article">Article</div>
+      <div class="Aside">Aside</div>
+      <div class="Nav">Nav</div>
+    </div>
+    <div class="Footer">Footer</div>
+  </div>
+</body>
+</html>
+```

@@ -1,0 +1,312 @@
+```html
+<!--Questão 1
+O objetivo era regar as duas últimas colunas:
+grid-column: 4 / span 2;
+grid-column: 4 seleciona a coluna 4
+span 2 ocupa 2 colunas a partir do 4
+-->
+
+
+
+<!--Questão 2-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid Layout</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "nav content"
+        "nav footer";
+      grid-template-columns: 280px 1fr; /* Nav com 280px */
+      grid-template-rows: 28vh 1fr auto;
+      height: 100vh;
+    }
+    .Header {
+      grid-area: header;
+      background: #ef9a9a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .Nav {
+      grid-area: nav;
+      background: #7986cb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .Content {
+      grid-area: content;
+      background: #ffcc80;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    .Footer {
+      grid-area: footer;
+      background: #c62828;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      height: 55px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="Header">Header</div>
+    <div class="Nav">Nav</div>
+    <div class="Content">Content</div>
+    <div class="Footer">Footer</div>
+  </div>
+</body>
+</html>
+
+
+
+<!--Questão 3-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid Complexo</title>
+  <style>
+    body {
+      background: #f5f5f5;
+      min-height: 100vh;
+      padding: 18px;
+    }
+    .container {
+      display: grid;
+      gap: 12px;
+      grid-template-areas:
+        "a a a b b"
+        "c d d d d";
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 1fr 1fr;
+      height: 85vh;
+    }
+    .itemA, .itemB, .itemC {
+      background: #424242;
+      color: #fafafa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: bold;
+    }
+    .itemA { grid-area: a; }
+    .itemB { grid-area: b; }
+    .itemC { grid-area: c; }
+
+    .grid-selection {
+      grid-area: d;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
+      gap: 12px;
+      background: #fff;
+      padding: 14px;
+    }
+    .grid-selection > div {
+      background: #d6d6d6;
+      color: #222;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="itemA">A</div>
+    <div class="itemB">B</div>
+    <div class="itemC">C</div>
+    <div class="grid-selection">
+      <div>E</div>
+      <div>F</div>
+      <div>G</div>
+      <div>M</div>
+      <div>I</div>
+      <div>J</div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+<!--Questão 4-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout Responsivo Grid</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Verdana, sans-serif;
+      background: #ddd;
+      padding: 18px;
+    }
+    .container {
+      display: grid;
+      background: #fff;
+      border: 2px solid #bbb;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      min-height: 480px;
+    }
+
+    /* Layout Desktop */
+    @media (min-width: 768px) {
+      .container {
+        grid-template-areas:
+          "header header header header"
+          "left banner banner right"
+          "left main main right"
+          "low main main right"
+          "footer footer footer footer";
+        grid-template-columns: 110px 1fr 1fr 110px;
+        grid-template-rows: 55px 55px 1fr 55px 45px;
+        max-width: 640px;
+      }
+    }
+
+    /* Layout Mobile */
+    @media (max-width: 767px) {
+      .container {
+        grid-template-areas:
+          "header"
+          "banner"
+          "left"
+          "main"
+          "right"
+          "low"
+          "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: 55px 55px 55px 260px 55px 55px 45px;
+        max-width: 320px;
+      }
+    }
+
+    .header {
+      grid-area: header;
+      background: #ff9800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .banner {
+      grid-area: banner;
+      background: #b71c1c;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .left-aside {
+      grid-area: left;
+      background: #2e7d32;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 12px;
+      writing-mode: vertical-rl;
+    }
+    .main-content {
+      grid-area: main;
+      background: #1565c0;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      text-align: center;
+      font-size: 15px;
+    }
+    .right-aside {
+      grid-area: right;
+      background: #ff9800;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 12px;
+      writing-mode: vertical-rl;
+    }
+    .low-content {
+      grid-area: low;
+      background: #388e3c;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .footer {
+      grid-area: footer;
+      background: #1565c0;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    .dimensions {
+      font-size: 12px;
+      margin-top: 6px;
+      opacity: 0.75;
+    }
+    @media (max-width: 767px) {
+      .left-aside, .right-aside {
+        writing-mode: horizontal-tb;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">Header</div>
+    <div class="banner">Banner</div>
+    <div class="left-aside">Left Aside</div>
+    <div class="main-content">
+      <div>Main Content</div>
+      <div class="dimensions">Width: 437, Height: 873</div>
+    </div>
+    <div class="right-aside">Right Aside</div>
+    <div class="low-content">Low Content</div>
+    <div class="footer">Footer</div>
+  </div>
+</body>
+</html>
+```
