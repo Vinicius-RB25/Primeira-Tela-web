@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>O que é JavaScript?</title>
+</head>
+<body>
+    <h1 id="titulo">O que é JavaScript?</h1>
+
+    <p id="texto">
+        O JavaScript é uma linguagem de programação, interpretada para desenvovlvimento web.  
+        Ele pode funcionar tanto no navegador, que é o lado do usuário, 
+        quanto no servidor, com ferramentas como o Node.js.  
+        No navegador, ele roda dentro de um ambiente seguro chamado “sandbox”, 
+        que impede o acesso a arquivos pessoais do computador e garante mais segurança.  
+
+        Alguns objetos importantes do JavaScript são:  
+        document, que permite alterar o conteúdo da página;  
+        console, que mostra mensagens e informações úteis para o desenvolvedor;  
+        e alert, que exibe avisos e mensagens na tela.
+    </p>
+
+    <p id="hora"></p>
+
+    <script>
+        alert("Opa, tela de JavaScript");
+        console.log("Página Carregada");
+
+        const hr= new Date().toLocaleTimeString();
+        document.getElementById("hora").innerHTML = "Hora: " + hr;
+    </script>
+</body>
+</html>

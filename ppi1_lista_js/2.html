@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Questao 2</title>
+</head>
+<body>
+    <h1>Variaveis e OPeradores</h1>
+
+    <button onclick="tipos()">Mostrar Tipos</button>
+
+    <p id="pstring"></p>
+    <p id="pnumero"></p>
+    <p id="pboolean"></p>
+    <p id="pundefined"></p>
+    <p id="pnull"></p>
+    <p id="pobjeto"></p>
+    <p id="parray"></p>
+    <p id="poperacoes"></p>
+
+    <script>
+        function tipos() {
+            const texto = "Olá mundo";
+            const numero = 10;
+            const logico = true;
+            let indefinido;
+            const nulo = null;
+            const objeto = { nome: "Vinícius", idade: 17 };
+            const lista = [1, 2, 3];
+
+            document.getElementById("pstring").innerText = "String: " + texto + "  tipo: " + typeof texto;
+            document.getElementById("pnumero").innerText = "Number: " + numero + "  tipo: " + typeof numero;
+            document.getElementById("pboolean").innerText = "Boolean: " + logico + " tipo: " + typeof logico;
+            document.getElementById("pundefined").innerText = "Undefined: " + indefinido + " tipo: " + typeof indefinido;
+            document.getElementById("pnull").innerText = "Null: " + nulo + " tipo: " + typeof nulo;
+            document.getElementById("pobjeto").innerText = "Object: " + JSON.stringify(objeto) + " tipo: " + typeof objeto;
+            document.getElementById("parray").innerText = "Array: " + lista + " tipo: " + typeof lista;
+
+            console.log("String + Number:", texto + numero);
+            console.log("Boolean * Number:", logico * numero);
+            console.log("String * Number:", texto * numero);
+
+            const resultados = 
+                "String + Number = 'Olá10' (o número vira texto)\n" +
+                "Boolean * Number = 10 (true vale 1, então 1 * 10 = 10)\n" +
+                "String * Number = NaN (texto não pode ser multiplicado)";
+
+            document.getElementById("poperacoes").innerText = resultados;
+        }
+    </script>
+</body>
+</html>
