@@ -19,6 +19,11 @@
         input, button {
           margin: 5px;
         }
+        img {
+      margin-top: 10px;
+      max-width: 200px;
+      display: none; 
+    }
     </style>
 </head>
 <body>
@@ -29,34 +34,48 @@
     <button onclick="CalcularIMC()">Calcular</button>
     <p id="resultadoIMC"></p>
     <p id="classificacao"></p>
+    <img id="imagemIMC" alt="">
   </div>
 
   <script>
     function CalcularIMC() {
-      let nome = document.getElementById("nome").value
+      let nome = document.getElementById("nome").value  
       let peso = parseFloat(document.getElementById("peso").value)
       let altura = parseFloat(document.getElementById("altura").value)
       let resultadoIMC = document.getElementById("resultadoIMC")
       let classificacao = document.getElementById("classificacao")
+      let imagem = document.getElementById("imagemIMC"
+        
+      )
 
       let imc = (peso / (altura * altura)).toFixed(2)
       resultadoIMC.innerText = " "+nome + ", seu IMC é: "+ imc
+       imagem.style.display = "block"
+
+       if (!nome || isNaN(peso) || isNaN(altura)) {
+        alert("Preencha os campos")
+        return
+       }
 
       if (imc < 18.5) {
         classificacao.innerText = "Classificação: Abaixo do peso"
         classificacao.style.color="red"
+        imagem.src = "imagens/abaixopeso.png"
       }
        else if (imc < 24.9) {
         classificacao.innerText = "Classificação: Peso normal"
         classificacao.style.color="blue"
+        imagem.src = "imagens/normal.png"
       }
        else if (imc < 29.9) {
         classificacao.innerText = "Classificação: Sobrepeso"
-        classificacao.style.color="´purple"
+        classificacao.style.color="´purple" 
+        imagem.src = "imagens/sobrepeso.png"
       }
        else {
         classificacao.innerText = "Classificação: Obesidade"
         classificacao.style.color="green"
+        imagem.src = "imagens/obesidade1.png"
       }
     }
   </script>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorteio de Números</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    input, button {
+      margin: 5px;
+      padding: 8px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 3px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sorteio de Números</h1>
+
+    <input type="number" id="min" placeholder="Valor mínimo">
+    <input type="number" id="max" placeholder="Valor máximo">
+    <button onclick="sortear()">Sortear</button>
+
+    <p id="resultado"></p>
+
+    <h3>Números Sorteados</h3>
+    <ul id="lista"></ul>
+  </div>
+
+  <script>
+    const historico = []
+
+    function sortear() {
+      let min = parseInt(document.getElementById("min").value)
+      let max = parseInt(document.getElementById("max").value)
+      let resultado = document.getElementById("resultado")
+
+      if (isNaN(min) || isNaN(max) || min >= max) {
+        alert("Digite valores válidos! O mínimo deve ser menor que o máximo.")
+        return
+      }
+
+      let numero = Math.floor(Math.random() * (max - min + 1)) + min
+      resultado.innerText = "Número sorteado: " + numero
+
+      let encontrado = null
+      for(let i = 0; i < historico.length; i++){
+        if(historico[i].numero === numero){
+            encontrado = historico[i]
+            break;
+        }
+      }
+
+      if (encontrado) {
+        encontrado.vezes++
+      } else {
+        historico.push({ numero: numero, vezes: 1 })
+      }
+
+      atualizarLista()
+    }
+
+    function atualizarLista() {
+      let lista = document.getElementById("lista")
+      lista.innerHTML = ""
+
+      historico.forEach(item => {
+        let li = document.createElement("li")
+        li.innerText = "Número " + item.numero + " - sorteado " + item.vezes + " vez(es)"
+        lista.appendChild(li)
+      })
+    }
+  </script>
+</body>
+</html>
