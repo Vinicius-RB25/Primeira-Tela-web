@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mudar Cor de Fundo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87ceeb;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background-color 0.5s;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: #333;
+      color: white;
+    }
+
+    #corAtual {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="alterarCor()">Alterar Cor de Fundo</button>
+  <p id="corAtual">Cor atual: #87ceeb</p>
+
+  <script>
+    function gerarCorAleatoria() {
+      const r = Math.floor(Math.random() * 256)
+      const g = Math.floor(Math.random() * 256)
+      const b = Math.floor(Math.random() * 256)
+      return "rgb(" + r + ", " + g + ", " + b + ")"
+    }
+
+    function alterarCor() {
+      const cor = gerarCorAleatoria()
+      document.body.style.backgroundColor = cor
+      document.getElementById('corAtual').innerText = "Cor atual:  "+ cor
+
+      
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      text-align: center;
+    }
+    input, button {
+      margin: 5px;
+      padding: 8px;
+    }
+    #resultado {
+      margin-top: 12px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+ <div class="container">
+    <h1>Verificador de Palíndromos</h1>
+    <input type="text" id="texto" placeholder="Digite uma palavra ou frase">
+    <button onclick="verificar()">Verificar</button>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function verificar(){
+        let texto1 = document.getElementById("texto").value
+        let resultado = document.getElementById("resultado")
+
+        let normal = texto1.toLowerCase()
+        let invertida = normal.split("").reverse().join("")
+
+        if(invertida === normal){
+            resultado.textContent = "A palavra: "+ texto1 + ", é palíndromo"
+        }
+
+        else{
+            resultado.textContent = "A palavra: "+ texto1 + ", não é palíndromo"
+
+        }
+    }
+
+  </script>
+</body>
+</html>
