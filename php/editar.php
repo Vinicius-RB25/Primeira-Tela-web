@@ -3,16 +3,36 @@ $conn = new mysqli("localhost", "root", "admin", "crud");
 
 $id = $_GET["id"];
 
+// busca os dados do usuário
 $user = $conn->query("SELECT * FROM users WHERE id = $id")->fetch_assoc();
+
+$erro = "";
 
 if ($_POST) {
     $nome = $_POST["nome"];
     $email = $_POST["email"];
-    $senha = $_POST["senha"];
+    $senha = $_POST["senha"]; // senha nova (se for enviada)
 
-    $conn->query("UPDATE users SET nome='$nome', email='$email', senha='$senha' WHERE id=$id");
+    if (empty($nome) || empty($email)) {
+        $erro = "Nome e email não podem ficar vazios.";
+    } else {
+        // mantém senha antiga se campo estiver vazio
+        if (empty($senha)) {
+            $senhaHash = $user["senha"];
+        } else {
+            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+        }
 
-    header("Location: index.php");
+        // executa update
+        $conn->query("
+            UPDATE users 
+            SET nome='$nome', email='$email', senha='$senhaHash'
+            WHERE id=$id
+        ");
+
+        header("Location: index.php");
+        exit;
+    }
 }
 ?>
 
@@ -25,49 +45,94 @@ if ($_POST) {
 
     <style>
         body {
-            font-family: Arial;
-        }
-        form {
+            margin: 0;
+            background: #f4f4f4;
+            font-family: Arial, sans-serif;
+
             display: flex;
-            flex-direction: column;
-            width: 200px;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
+        .card {
+            background: white;
+            width: 320px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
         input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #005fcc;
+        }
+
+        .erro {
+            color: red;
             margin-bottom: 10px;
-            padding: 6px;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
-<h2>Editar Usuário</h2>
+<div class="card">
 
-<form method="POST">
+    <h2>Editar Usuário</h2>
 
-    <input 
-        type="text" 
-        name="nome" 
-        placeholder="Nome" 
-        value="<?= $user['nome'] ?>"
-    >
+    <?php if ($erro != "") { ?>
+        <div class="erro"><?= $erro ?></div>
+    <?php } ?>
 
-    <input 
-        type="text" 
-        name="email" 
-        placeholder="Email" 
-        value="<?= $user['email'] ?>"
-    >
+    <form method="POST">
 
-    <input 
-        type="password" 
-        name="senha" 
-        placeholder="Senha" 
-        value="<?= $user['senha'] ?>"
-    >
+        <input 
+            type="text" 
+            name="nome" 
+            placeholder="Nome"
+            value="<?= $user['nome'] ?>"
+        >
 
-    <button type="submit">Salvar</button>
+        <input 
+            type="text" 
+            name="email" 
+            placeholder="Email"
+            value="<?= $user['email'] ?>"
+        >
 
-</form>
+        <input 
+            type="password" 
+            name="senha"
+            placeholder="Nova senha (opcional)"
+        >
+
+        <button type="submit">Salvar</button>
+
+    </form>
+
+</div>
 
 </body>
 </html>

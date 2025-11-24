@@ -1,26 +1,34 @@
 <?php
+session_start();
 $conn = new mysqli("localhost", "root", "admin", "crud");
 
 $erro = "";
 
 if ($_POST) {
-
-    $nome = $_POST["nome"];
     $email = $_POST["email"];
     $senha = $_POST["senha"];
 
-    if (empty($nome) || empty($email) || empty($senha)) {
-        $erro = "Preencha todos os campos!";
+    if (empty($email) || empty($senha)) {
+        $erro = "Preencha todos os campos.";
     } else {
-        $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
+        $query = $conn->query("SELECT * FROM users WHERE email='$email'");
 
-        $conn->query("
-            INSERT INTO users (nome, email, senha)
-            VALUES ('$nome', '$email', '$senhaSegura')
-        ");
+        if ($query->num_rows > 0) {
+            $user = $query->fetch_assoc();
 
-        header("Location: login.php");
-        exit;
+            if (password_verify($senha, $user["senha"])) {
+
+                $_SESSION["logado"] = true;
+                $_SESSION["usuario"] = $user["nome"];
+
+                header("Location: index.php");
+                exit;
+            } else {
+                $erro = "Senha incorreta.";
+            }
+        } else {
+            $erro = "Usuário não encontrado.";
+        }
     }
 }
 ?>
@@ -30,31 +38,39 @@ if ($_POST) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Login</title>
 
     <style>
         body {
             margin: 0;
-            background: #f4f4f4;
             font-family: Arial, sans-serif;
+            background: #f4f4f4;
 
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         .card {
             background: white;
-            width: 320px;
             padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 280px;
             text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
         }
 
         input, button {
-            width: 100%;
             padding: 10px;
             margin-bottom: 12px;
             border: 1px solid #ccc;
@@ -63,42 +79,40 @@ if ($_POST) {
         }
 
         button {
-            background: #28a745;
-            color: white;
+            background: #007BFF;
             border: none;
             cursor: pointer;
+            color: white;
             transition: 0.2s;
         }
 
         button:hover {
-            background: #1e7e34;
+            background: #005fcc;
+        }
+
+        .erro {
+            color: red;
+            margin-bottom: 15px;
+            font-size: 14px;
         }
 
         a {
             text-decoration: none;
             color: #007BFF;
+            font-size: 14px;
         }
 
         a:hover {
             text-decoration: underline;
         }
-
-        h2 {
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .erro {
-            color: red;
-            margin-bottom: 10px;
-        }
     </style>
+
 </head>
 <body>
 
 <div class="card">
-
-    <h2>Criar Conta</h2>
+    
+    <h2>Login</h2>
 
     <?php if ($erro != "") { ?>
         <div class="erro"><?= $erro ?></div>
@@ -106,17 +120,15 @@ if ($_POST) {
 
     <form method="POST">
 
-        <input type="text" name="nome" placeholder="Nome">
-
         <input type="text" name="email" placeholder="Email">
 
         <input type="password" name="senha" placeholder="Senha">
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit">Entrar</button>
 
     </form>
 
-    <a href="login.php">Voltar para o Login</a>
+    <a href="register.php">Criar conta</a>
 
 </div>
 

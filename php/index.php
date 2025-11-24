@@ -9,55 +9,108 @@ $result = $conn->query("SELECT * FROM users");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD</title>
+    <title>Lista de Usuários</title>
+
     <style>
         body {
-            font-family: Arial;
+            margin: 0;
+            background: #f4f4f4;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
+        .card {
+            background: white;
+            width: 80%;
+            max-width: 900px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .btn-add {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #007BFF;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: 0.2s;
+        }
+
+        .btn-add:hover {
+            background: #005fcc;
+        }
+
         table {
             border-collapse: collapse;
-            width: 60%;
+            width: 100%;
+            text-align: left;
         }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 8px;
+
+        th {
+            background: #007BFF;
+            color: white;
+            padding: 10px;
         }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
         a {
+            color: #007BFF;
             text-decoration: none;
-            color: blue;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-<h2>Lista de Usuários</h2>
+<div class="card">
 
-<a href="criar.php">Adicionar Usuário</a>
+    <h2>Lista de Usuários</h2>
 
-<br><br>
+    <a class="btn-add" href="criar.php">+ Adicionar Usuário</a>
 
-<table>
-    <tr>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Senha</th>
-    </tr>
-
-    <?php while ($row = $result->fetch_assoc()) { ?>
-
+    <table>
         <tr>
-            <td><?= $row["nome"] ?></td>
-            <td><?= $row["email"] ?></td>
-            <td><?= $row["senha"] ?></td>
-            <td>
-                <a href="editar.php?id=<?= $row['id'] ?>">Editar</a> |
-                <a href="deletar.php?id=<?= $row['id'] ?>">Excluir</a>
-            </td>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Senha (hash)</th>
+            <th>Ações</th>
         </tr>
 
-    <?php } ?>
+        <?php while ($row = $result->fetch_assoc()) { ?>
 
-</table>
+            <tr>
+                <td><?= $row["nome"] ?></td>
+                <td><?= $row["email"] ?></td>
+                <td><?= $row["senha"] ?></td>
+                <td>
+                    <a href="editar.php?id=<?= $row['id'] ?>">Editar</a> |
+                    <a href="deletar.php?id=<?= $row['id'] ?>">Excluir</a>
+                </td>
+            </tr>
+
+        <?php } ?>
+    </table>
+
+</div>
 
 </body>
 </html>
