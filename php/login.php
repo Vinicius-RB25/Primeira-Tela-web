@@ -10,7 +10,8 @@ if ($_POST) {
 
     if (empty($email) || empty($senha)) {
         $erro = "Preencha todos os campos.";
-    } else {
+    }
+     else {
         $query = $conn->query("SELECT * FROM users WHERE email='$email'");
 
         if ($query->num_rows > 0) {
@@ -128,7 +129,7 @@ if ($_POST) {
 
     </form>
 
-    <a href="register.php">Criar conta</a>
+    <a href="criar.php">Criar conta</a>
 
 </div>
 

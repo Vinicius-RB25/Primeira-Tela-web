@@ -3,7 +3,6 @@ $conn = new mysqli("localhost", "root", "admin", "crud");
 
 $id = $_GET["id"];
 
-// busca os dados do usuário
 $user = $conn->query("SELECT * FROM users WHERE id = $id")->fetch_assoc();
 
 $erro = "";
@@ -11,19 +10,17 @@ $erro = "";
 if ($_POST) {
     $nome = $_POST["nome"];
     $email = $_POST["email"];
-    $senha = $_POST["senha"]; // senha nova (se for enviada)
+    $senha = $_POST["senha"]; 
 
     if (empty($nome) || empty($email)) {
         $erro = "Nome e email não podem ficar vazios.";
     } else {
-        // mantém senha antiga se campo estiver vazio
         if (empty($senha)) {
             $senhaHash = $user["senha"];
         } else {
             $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
         }
 
-        // executa update
         $conn->query("
             UPDATE users 
             SET nome='$nome', email='$email', senha='$senhaHash'

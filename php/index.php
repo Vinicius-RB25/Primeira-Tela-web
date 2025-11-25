@@ -100,7 +100,8 @@ $result = $conn->query("SELECT * FROM users");
             <tr>
                 <td><?= $row["nome"] ?></td>
                 <td><?= $row["email"] ?></td>
-                <td><?= $row["senha"] ?></td>
+                <td><?= substr($row["senha"], 0, 10) . "..." ?></td>
+
                 <td>
                     <a href="editar.php?id=<?= $row['id'] ?>">Editar</a> |
                     <a href="deletar.php?id=<?= $row['id'] ?>">Excluir</a>

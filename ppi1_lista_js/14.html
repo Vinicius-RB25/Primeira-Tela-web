@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1>Captura de Teclas do Teclado</h1>
+  <div id="saida" style="font-size:20px; border:1px solid #ccc; padding:10px; width:300px; min-height:50px;"></div>
+
+  <script>
+    const saida = document.getElementById('saida');
+
+    document.addEventListener('keydown', (event) => {
+      console.log('Tecla pressionada:', event.key);
+      saida.textContent += event.key; 
+    });
+  </script>
+</body>
+
+</html>

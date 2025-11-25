@@ -1,312 +1,552 @@
-```html
-<!--Questão 1
-O objetivo era regar as duas últimas colunas:
-grid-column: 4 / span 2;
-grid-column: 4 seleciona a coluna 4
-span 2 ocupa 2 colunas a partir do 4
--->
-
-
-
-<!--Questão 2-->
+<!-- === 1 ==== -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Grid Layout</title>
-  <style>
-    body {
-      height: 100vh;
-      margin: 0;
-    }
-    .container {
-      display: grid;
-      grid-template-areas:
-        "header header"
-        "nav content"
-        "nav footer";
-      grid-template-columns: 280px 1fr; /* Nav com 280px */
-      grid-template-rows: 28vh 1fr auto;
-      height: 100vh;
-    }
-    .Header {
-      grid-area: header;
-      background: #ef9a9a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-    }
-    .Nav {
-      grid-area: nav;
-      background: #7986cb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-    .Content {
-      grid-area: content;
-      background: #ffcc80;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
-    .Footer {
-      grid-area: footer;
-      background: #c62828;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .9rem;
-      height: 55px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .layout-principal {
+            display: grid;
+            height: 100vh;
+
+            grid-template-areas:
+                "topo topo"
+                "lateral corpo"
+                "lateral base";
+
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: 30vh 1fr auto;
+        }
+
+        .area-topo {
+            grid-area: topo;
+            background-color: #e57373;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            height: 30vh;
+        }
+
+        .area-menu {
+            grid-area: lateral;
+            background-color: #c5cae9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: bold;
+
+            margin-left: 0;
+            margin-right: auto;
+            width: 300px;
+            height: 70vh;
+        }
+
+        .area-conteudo {
+            grid-area: corpo;
+            background: #ffe0b2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .area-rodape {
+            grid-area: base;
+            background-color: #ff0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            height: 60px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <div class="Header">Header</div>
-    <div class="Nav">Nav</div>
-    <div class="Content">Content</div>
-    <div class="Footer">Footer</div>
-  </div>
-</body>
-</html>
-
-
-
-<!--Questão 3-->
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>Grid Complexo</title>
-  <style>
-    body {
-      background: #f5f5f5;
-      min-height: 100vh;
-      padding: 18px;
-    }
-    .container {
-      display: grid;
-      gap: 12px;
-      grid-template-areas:
-        "a a a b b"
-        "c d d d d";
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: 1fr 1fr;
-      height: 85vh;
-    }
-    .itemA, .itemB, .itemC {
-      background: #424242;
-      color: #fafafa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      font-weight: bold;
-    }
-    .itemA { grid-area: a; }
-    .itemB { grid-area: b; }
-    .itemC { grid-area: c; }
-
-    .grid-selection {
-      grid-area: d;
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
-      grid-template-rows: repeat(2, 1fr);
-      gap: 12px;
-      background: #fff;
-      padding: 14px;
-    }
-    .grid-selection > div {
-      background: #d6d6d6;
-      color: #222;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="itemA">A</div>
-    <div class="itemB">B</div>
-    <div class="itemC">C</div>
-    <div class="grid-selection">
-      <div>E</div>
-      <div>F</div>
-      <div>G</div>
-      <div>M</div>
-      <div>I</div>
-      <div>J</div>
+    <div class="layout-principal">
+        <div class="area-topo">Cabeçalho</div>
+        <div class="area-menu">Menu</div>
+        <div class="area-conteudo">Conteúdo</div>
+        <div class="area-rodape">Rodapé</div>
     </div>
-  </div>
 </body>
 </html>
 
 
 
-<!--Questão 4-->
+
+
+
+<!-- === 2 ==== -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Layout Responsivo Grid</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Verdana, sans-serif;
-      background: #ddd;
-      padding: 18px;
-    }
-    .container {
-      display: grid;
-      background: #fff;
-      border: 2px solid #bbb;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      min-height: 480px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-    /* Layout Desktop */
-    @media (min-width: 768px) {
-      .container {
-        grid-template-areas:
-          "header header header header"
-          "left banner banner right"
-          "left main main right"
-          "low main main right"
-          "footer footer footer footer";
-        grid-template-columns: 110px 1fr 1fr 110px;
-        grid-template-rows: 55px 55px 1fr 55px 45px;
-        max-width: 640px;
-      }
-    }
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-    /* Layout Mobile */
-    @media (max-width: 767px) {
-      .container {
-        grid-template-areas:
-          "header"
-          "banner"
-          "left"
-          "main"
-          "right"
-          "low"
-          "footer";
-        grid-template-columns: 1fr;
-        grid-template-rows: 55px 55px 55px 260px 55px 55px 45px;
-        max-width: 320px;
-      }
-    }
+        .grid-wrapper {
+            display: grid;
+            height: 100vh;
+            gap: 10px;
 
-    .header {
-      grid-area: header;
-      background: #ff9800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    .banner {
-      grid-area: banner;
-      background: #b71c1c;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 14px;
-    }
-    .left-aside {
-      grid-area: left;
-      background: #2e7d32;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 12px;
-      writing-mode: vertical-rl;
-    }
-    .main-content {
-      grid-area: main;
-      background: #1565c0;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      text-align: center;
-      font-size: 15px;
-    }
-    .right-aside {
-      grid-area: right;
-      background: #ff9800;
-      color: #333;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 12px;
-      writing-mode: vertical-rl;
-    }
-    .low-content {
-      grid-area: low;
-      background: #388e3c;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 12px;
-    }
-    .footer {
-      grid-area: footer;
-      background: #1565c0;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 13px;
-    }
-    .dimensions {
-      font-size: 12px;
-      margin-top: 6px;
-      opacity: 0.75;
-    }
-    @media (max-width: 767px) {
-      .left-aside, .right-aside {
-        writing-mode: horizontal-tb;
-      }
-    }
-  </style>
+            grid-template-areas:
+                "blkA blkA blkA blkB blkB"
+                "blkC blkD blkD blkD blkD";
+
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .caixa-a {
+            grid-area: blkA;
+            background-color: #4a4a4a;
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 3rem;
+            font-weight: bold;
+
+            margin-right: 90px;
+        }
+
+        .caixa-b {
+            grid-area: blkB;
+            background-color: #4a4a4a;
+            color: #fff;
+
+            margin-left: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .caixa-c {
+            grid-area: blkC;
+            background-color: #4a4a4a;
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .grupo-opcoes {
+            grid-area: blkD;
+            background-color: #fff;
+
+            display: grid;
+            padding: 10px;
+
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .item-opt {
+            background-color: #b0b0b0;
+            color: #333;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    </style>
+
 </head>
 <body>
-  <div class="container">
-    <div class="header">Header</div>
-    <div class="banner">Banner</div>
-    <div class="left-aside">Left Aside</div>
-    <div class="main-content">
-      <div>Main Content</div>
-      <div class="dimensions">Width: 437, Height: 873</div>
+    <div class="grid-wrapper">
+        <div class="caixa-a">A</div>
+        <div class="caixa-b">B</div>
+        <div class="caixa-c">C</div>
+
+        <div class="grupo-opcoes">
+            <div class="item-opt">E</div>
+            <div class="item-opt">F</div>
+            <div class="item-opt">G</div>
+            <div class="item-opt">M</div>
+            <div class="item-opt">I</div>
+            <div class="item-opt">J</div>
+        </div>
     </div>
-    <div class="right-aside">Right Aside</div>
-    <div class="low-content">Low Content</div>
-    <div class="footer">Footer</div>
-  </div>
 </body>
 </html>
-```
+
+
+
+
+
+
+<!-- === 3 ==== -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Responsivo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ddd;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .grade-adaptavel {
+            display: grid;
+            gap: 3px;
+            min-height: 500px;
+
+            border: 2px solid #ccc;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 768px) {
+            .grade-adaptavel {
+                grid-template-areas:
+                    "top top top top"
+                    "menu banner banner lateral"
+                    "menu conteudo conteudo lateral"
+                    "rod rod rod rod";
+
+                grid-template-columns: 100px 1fr 1fr 100px;
+                grid-template-rows: 50px 50px 1fr 50px;
+
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .grade-adaptavel {
+                grid-template-areas:
+                    "top"
+                    "banner"
+                    "menu"
+                    "conteudo"
+                    "lateral"
+                    "rod";
+
+                grid-template-columns: 1fr;
+                grid-template-rows: 50px 50px 50px 300px 50px 50px;
+
+                max-width: 300px;
+            }
+        }
+
+        .area-top {
+            grid-area: top;
+            background-color: #ffa500;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #333;
+            font-weight: bold;
+        }
+
+        .area-banner {
+            grid-area: banner;
+            background-color: #dc3545;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            font-weight: bold;
+        }
+
+        .area-menu-vert {
+            grid-area: menu;
+            background-color: #28a745;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            font-weight: bold;
+            writing-mode: vertical-rl;
+        }
+
+        .area-main {
+            grid-area: conteudo;
+            background-color: #007bff;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .area-barra {
+            grid-area: lateral;
+            background-color: #ffa500;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            writing-mode: vertical-rl;
+            font-weight: bold;
+        }
+
+        .area-rod {
+            grid-area: rod;
+            background-color: #007bff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grade-adaptavel">
+        <div class="area-top">Cabeçalho</div>
+        <div class="area-banner">Banner</div>
+        <div class="area-menu-vert">Menu</div>
+
+        <div class="area-main">
+            <div>Conteúdo</div>
+            <div class="dimensoes">Largura: 437, Altura: 873</div>
+        </div>
+
+        <div class="area-barra">Barra Lateral</div>
+        <div class="area-rod">Rodapé</div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+<!-- === 4 ==== -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Responsivo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ddd;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .grade-total {
+            display: grid;
+            gap: 3px;
+
+            min-height: 500px;
+            background-color: #fff;
+
+            border: 2px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (min-width: 768px) {
+            .grade-total {
+                grid-template-areas:
+                    "cab cab cab cab"
+                    "band banner banner lateral"
+                    "band main main lateral"
+                    "main main main lateral"
+                    "rod rod rod rod";
+
+                grid-template-columns: 100px 1fr 1fr 100px;
+                grid-template-rows: 50px 50px 1fr 50px 50px;
+
+                max-width: 600px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .grade-total {
+                grid-template-areas:
+                    "cab"
+                    "banner"
+                    "band"
+                    "main"
+                    "lateral"
+                    "bottom"
+                    "rod";
+
+                grid-template-columns: 1fr;
+                grid-template-rows: 50px 50px 50px 300px 50px 50px 50px;
+
+                max-width: 300px;
+            }
+        }
+
+        .cabeca {
+            grid-area: cab;
+            background-color: #ffa500;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+        }
+
+        .faixa-banner {
+            grid-area: banner;
+            background-color: #dc3545;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+            color: white;
+        }
+
+        .menu-vertical {
+            grid-area: band;
+            background-color: #28a745;
+
+            writing-mode: vertical-rl;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+            color: white;
+        }
+
+        .main-content {
+            grid-area: main;
+            background-color: #007bff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            color: white;
+            font-weight: bold;
+        }
+
+        .barra-lat {
+            grid-area: lateral;
+            background-color: #ffa600;
+
+            writing-mode: vertical-rl;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .block-bottom {
+            grid-area: bottom;
+            background-color: #28a745;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+            color: white;
+        }
+
+        .rodapefinal {
+            grid-area: rod;
+            background-color: #007bff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-weight: bold;
+            color: white;
+        }
+
+        @media (max-width: 767px) {
+            .menu-vertical,
+            .barra-lat {
+                writing-mode: horizontal-tb;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="grade-total">
+
+        <div class="cabeca">Cabeçalho</div>
+        <div class="faixa-banner">Baner</div>
+        <div class="menu-vertical">Menu Lateral</div>
+
+        <div class="main-content">
+            <div>Conteúdo</div>
+            <div class="dimensoes">Largura: 437, Altura: 873</div>
+        </div>
+
+        <div class="barra-lat">Barra Lateral</div>
+        <div class="block-bottom">Conteúdo Baixo</div>
+
+        <div class="rodapefinal">Rodape</div>
+    </div>
+</body>
+</html>
