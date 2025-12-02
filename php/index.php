@@ -88,7 +88,7 @@ $result = $conn->query("SELECT * FROM users");
     <a class="btn-add" href="criar.php">+ Adicionar Usuário</a>
 
     <table>
-        <tr>
+        <tr> 
             <th>Nome</th>
             <th>Email</th>
             <th>Senha (hash)</th>
@@ -100,8 +100,7 @@ $result = $conn->query("SELECT * FROM users");
             <tr>
                 <td><?= $row["nome"] ?></td>
                 <td><?= $row["email"] ?></td>
-                <td><?= substr($row["senha"], 0, 10) . "..." ?></td>
-
+                <td><?= substr($row["senha"], 0, 8) . "..." ?></td>
                 <td>
                     <a href="editar.php?id=<?= $row['id'] ?>">Editar</a> |
                     <a href="deletar.php?id=<?= $row['id'] ?>">Excluir</a>

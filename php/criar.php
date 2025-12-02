@@ -1,26 +1,23 @@
 <?php
-$conn = new mysqli("localhost", "root", "admin", "crud");
+$conn = new mysqli("localhost", "root", "admin", "crud"); 
 
-$erro = "";
+$erro = ""; 
 
-if ($_POST) {
+if ($_POST) { 
+    $nome = $_POST["nome"]; 
+    $email = $_POST["email"]; 
+    $senha = $_POST["senha"]; 
 
-    $nome = $_POST["nome"];
-    $email = $_POST["email"];
-    $senha = $_POST["senha"];
-
-    if (empty($nome) || empty($email) || empty($senha)) {
+    if (empty($nome) || empty($email) || empty($senha)) { 
         $erro = "Preencha todos os campos!";
-    } else {
+     } 
+    else {
         $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
 
-        $conn->query("
-            INSERT INTO users (nome, email, senha)
-            VALUES ('$nome', '$email', '$senhaSegura')
-        ");
+        $query = $conn->query("INSERT INTO users (nome, email, senha) VALUES ('$nome', '$email', '$senhaSegura')");
 
-        header("Location: login.php");
-        exit;
+        header("Location: login.php"); 
+        exit; 
     }
 }
 ?>
@@ -37,7 +34,6 @@ if ($_POST) {
             margin: 0;
             background: #f4f4f4;
             font-family: Arial, sans-serif;
-
             display: flex;
             justify-content: center;
             align-items: center;
@@ -100,23 +96,22 @@ if ($_POST) {
 
     <h2>Criar Conta</h2>
 
-    <?php if ($erro != "") { ?>
+    <?php if ($erro != "") { ?> 
         <div class="erro"><?= $erro ?></div>
     <?php } ?>
 
-    <form method="POST">
+    <form method="POST"> 
 
-        <input type="text" name="nome" placeholder="Nome">
+        <input type="text" name="nome" placeholder="Nome"> 
 
-        <input type="text" name="email" placeholder="Email">
+        <input type="text" name="email" placeholder="Email"> 
 
-        <input type="password" name="senha" placeholder="Senha">
+        <input type="password" name="senha" placeholder="Senha"> 
 
-        <button type="submit">Cadastrar</button>
+        <button type="submit">Cadastrar</button> 
 
     </form>
-
-    <a href="login.php">Voltar para o Login</a>
+    <a href="login.php">Voltar para o Login</a> 
 
 </div>
 

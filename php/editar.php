@@ -17,15 +17,12 @@ if ($_POST) {
     } else {
         if (empty($senha)) {
             $senhaHash = $user["senha"];
-        } else {
+        } 
+        else {
             $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
         }
 
-        $conn->query("
-            UPDATE users 
-            SET nome='$nome', email='$email', senha='$senhaHash'
-            WHERE id=$id
-        ");
+    $query = $conn->query("UPDATE users SET nome='$nome', email='$email', senha='$senhaHash' WHERE id=$id");
 
         header("Location: index.php");
         exit;
@@ -103,31 +100,12 @@ if ($_POST) {
         <div class="erro"><?= $erro ?></div>
     <?php } ?>
 
-    <form method="POST">
-
-        <input 
-            type="text" 
-            name="nome" 
-            placeholder="Nome"
-            value="<?= $user['nome'] ?>"
-        >
-
-        <input 
-            type="text" 
-            name="email" 
-            placeholder="Email"
-            value="<?= $user['email'] ?>"
-        >
-
-        <input 
-            type="password" 
-            name="senha"
-            placeholder="Nova senha (opcional)"
-        >
-
-        <button type="submit">Salvar</button>
-
-    </form>
+<form method="POST">
+    <input type="text" name="nome" placeholder="Nome" value="<?= $user['nome'] ?>">
+    <input type="text" name="email" placeholder="Email" value="<?= $user['email'] ?>">
+    <input type="password" name="senha" placeholder="Nova senha (opcional)">
+    <button type="submit">Salvar</button>
+</form>
 
 </div>
 

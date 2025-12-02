@@ -1,34 +1,35 @@
 <?php
-session_start();
-$conn = new mysqli("localhost", "root", "admin", "crud");
+session_start(); 
+$conn = new mysqli("localhost", "root", "admin", "crud"); 
 
-$erro = "";
+$erro = ""; 
 
-if ($_POST) {
+if ($_POST) { 
     $email = $_POST["email"];
     $senha = $_POST["senha"];
 
-    if (empty($email) || empty($senha)) {
+    if (empty($email) || empty($senha)) { 
         $erro = "Preencha todos os campos.";
-    }
-     else {
-        $query = $conn->query("SELECT * FROM users WHERE email='$email'");
+    } 
+    else {
+        $query = $conn->query("SELECT * FROM users WHERE email='$email'"); 
 
-        if ($query->num_rows > 0) {
-            $user = $query->fetch_assoc();
+        if ($query->num_rows > 0) { 
+            $user = $query->fetch_assoc(); 
 
-            if (password_verify($senha, $user["senha"])) {
-
-                $_SESSION["logado"] = true;
+            if (password_verify($senha, $user["senha"])) { 
+                $_SESSION["logado"] = true; 
                 $_SESSION["usuario"] = $user["nome"];
 
-                header("Location: index.php");
-                exit;
-            } else {
-                $erro = "Senha incorreta.";
+                header("Location: index.php"); 
+                exit; 
+            } 
+            else {
+                $erro = "Senha incorreta."; 
             }
-        } else {
-            $erro = "Usuário não encontrado.";
+        } 
+        else {
+            $erro = "Usuário não encontrado."; 
         }
     }
 }
@@ -46,7 +47,6 @@ if ($_POST) {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #f4f4f4;
-
             display: flex;
             justify-content: center;
             align-items: center;
@@ -115,21 +115,21 @@ if ($_POST) {
     
     <h2>Login</h2>
 
-    <?php if ($erro != "") { ?>
+    <?php 
+    if ($erro != "") { ?> 
         <div class="erro"><?= $erro ?></div>
-    <?php } ?>
+    <?php } 
+    ?>
 
-    <form method="POST">
+    <form method="POST"> 
+        <input type="text" name="email" placeholder="Email"> 
 
-        <input type="text" name="email" placeholder="Email">
+        <input type="password" name="senha" placeholder="Senha"> 
 
-        <input type="password" name="senha" placeholder="Senha">
-
-        <button type="submit">Entrar</button>
-
+        <button type="submit">Entrar</button> 
     </form>
 
-    <a href="criar.php">Criar conta</a>
+    <a href="criar.php">Criar conta</a> 
 
 </div>
 
